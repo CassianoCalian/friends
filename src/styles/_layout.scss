@@ -1,6 +1,21 @@
 @use "colors";
 @use "fonts";
 
+$background_color: rgb(214, 181, 131);
+$red_color: #ba2a21;
+$yellow_color: rgb(249, 188, 74);
+$purple_color: rgb(127, 126, 163);
+$green_color: #727756;
+$brown_color: #9a6943;
+$white_color: #fff;
+
+$font_family: "Sora", sans-serif;
+
+@font-face {
+  font-family: "GabrielWeiss";
+  src: url(/fonts/gabriel_weiss_friends/GABRWFFR.TTF);
+}
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
