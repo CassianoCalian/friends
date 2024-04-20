@@ -1,0 +1,371 @@
+@use "colors";
+@use "fonts";
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.bg-home {
+  position: relative;
+}
+
+.bg-home::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6),
+      rgba(214, 181, 131)
+    ),
+    url(/dist/images/fonte_friends.jpg);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+
+.hero {
+  color: colors.$white_color;
+  min-height: 80vh;
+  font-family: fonts.$font_family;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+
+  .text-content {
+    width: 50%;
+    max-width: none;
+    padding-right: 20px; // Adiciona um espaço entre o texto e a imagem
+    font-family: "Sora", sans-serif;
+  }
+
+  .image-content {
+    width: 100%;
+
+    img {
+      filter: drop-shadow(15px 5px 5px purple);
+      animation: float 8s linear infinite;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  a {
+    font-family: "GabrielWeiss";
+    color: colors.$red_color;
+    cursor: pointer;
+
+    &:hover {
+      color: colors.$yellow_color;
+    }
+  }
+}
+
+a {
+  animation-name: translateY;
+  animation-duration: 0.8s; /* Duração da animação */
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5%, -5%);
+  }
+  50% {
+    transform: translate(0, -25%);
+  }
+  75% {
+    transform: translate(-10%, -10%);
+  }
+}
+
+//-------------------------------- now we start the about section
+
+.about {
+  width: 100%;
+  display: flex;
+  background-color: colors.$purple_color;
+
+  .about-content-item {
+    padding-top: 60px;
+    display: flex;
+    gap: 20px;
+    color: colors.$white_color;
+    font-family: sans-serif;
+
+    p {
+      text-align: justify;
+      font-size: 18px;
+      line-height: 30px;
+      color: black;
+    }
+
+    img {
+      height: 500px;
+    }
+  }
+}
+
+.about_content {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 50px;
+
+  h1 {
+    font-family: "GabrielWeiss";
+    color: colors.$white_color;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image-content {
+    height: 380px;
+    width: 50%;
+  }
+
+  .hero {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .text-content {
+    width: 45%;
+    padding-right: 5px;
+    flex-direction: column;
+  }
+
+  .about {
+    max-width: 768px;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .about-content-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .about_content {
+    flex-direction: column;
+    max-width: 768px;
+    width: 100%;
+  }
+}
+
+//--------------------- now we're gonna do the actors section
+
+.actors {
+  padding-bottom: 40px;
+
+  h1 {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 30px;
+    font-family: "GabrielWeiss";
+    color: colors.$white_color;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  background-color: colors.$background_color;
+  img {
+    height: 350px;
+    width: 350px;
+    margin-bottom: 10px;
+  }
+
+  .actors_list {
+    display: grid;
+    margin-top: 44px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    list-style: none;
+
+    li {
+      /* Define a altura igual à altura das imagens */
+      position: relative;
+    }
+
+    h4 {
+      position: absolute;
+      margin: 0px; /* Remova as margens padrão */
+      padding: 10px;
+      position: absolute; /* Posicione o <h4> dentro do <li> */
+      bottom: 0; /* Alinhe o <h4> ao fundo do <li> */
+      left: 0; /* Alinhe o <h4> à esquerda do <li> */
+      right: 0; /* Alinhe o <h4> à direita do <li> */
+      background-color: colors.$purple_color;
+      color: colors.$white_color;
+      font-family: "GabrielWeiss";
+      transition: opacity 0.3s ease;
+
+      margin-top: 20px;
+    }
+    .actors_list li:hover h4 {
+      opacity: 1;
+    }
+  }
+
+  .actors_list li {
+    text-align: center;
+    position: relative;
+  }
+  .actors_list li img {
+    transition: transform 0.3s ease; /* Adicione uma transição suave */
+  }
+
+  .actors_list li img:hover {
+    transform: scale(1.1); /* Aumente a escala da imagem ao passar o mouse */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .actors {
+    .actors_list {
+      display: block; /* Um ator por linha */
+      /* Espaçamento entre os atores */
+    }
+
+    img {
+      width: 100%; /* Garanta que as imagens ocupem toda a largura da linha */
+      height: 100%; /* Mantenha a proporção da imagem */
+    }
+
+    h4 {
+      /* Restaure a posição do h4 */
+      /* Adicione um pequeno espaço entre a imagem e o texto */
+    }
+  }
+}
+
+//----------------------- now we gonna do the curious section
+.curious {
+  background-color: colors.$purple_color;
+  padding-top: 40px;
+  text-align: center;
+  padding-bottom: 40px;
+
+  span {
+    font-weight: bold;
+  }
+
+  h1 {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: "GabrielWeiss";
+    margin-bottom: 40px;
+    color: colors.$white_color;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .curiosity-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .curiosity-item {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .curiosity-item video {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .curiosity-two {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    font-family: "sora";
+    line-height: 30px;
+    text-align: justify;
+  }
+}
+
+@media (max-width: 768px) {
+  .curious {
+    max-width: 768px;
+  }
+
+  .curiosity-item video {
+    width: 100%;
+    max-width: 768px;
+  }
+
+  .curiosity-content {
+    display: block; /* Alterar de grid para block */
+    margin-top: 20px; /* Adicionar espaçamento superior */
+  }
+
+  .curiosity-two {
+    width: 100%; /* Fazer as curiosidades ocuparem toda a largura */
+    max-width: 100%; /* Garantir que o texto não ultrapasse a largura máxima */
+  }
+}
+
+//----------------------------- now we gonna start the footer
+
+footer {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  font-family: "Sora";
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

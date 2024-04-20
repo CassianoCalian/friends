@@ -1,0 +1,29 @@
+@use "colors";
+@use "header";
+@use "layout";
+@use "fonts";
+
+@font-face {
+  font-family: "GabrielWeiss";
+  src: url(/fonts/gabriel_weiss_friends/GABRWFFR.TTF) format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  background-color: colors.$background_color;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: colors.$white_color;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "GabrielWeiss", sans-serif;
+}
