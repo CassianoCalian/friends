@@ -1,14 +1,6 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const imagemin = require("gulp-imagemin");
-const fs = require("fs");
-
-function createPublicDirectory(done) {
-  if (!fs.existsSync("./public")) {
-    fs.mkdirSync("./public");
-  }
-  done();
-}
 
 function styles() {
   return gulp
@@ -24,10 +16,7 @@ function images() {
     .pipe(gulp.dest("./dist/images"));
 }
 
-exports.default = gulp.series(
-  createPublicDirectory,
-  gulp.parallel(styles, images)
-);
+exports.default = gulp.series(gulp.parallel(styles, images));
 exports.watch = function () {
   gulp.watch("./src/styles/*scss", gulp.parallel(styles));
 };
