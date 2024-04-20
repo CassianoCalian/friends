@@ -6,14 +6,14 @@ function styles() {
   return gulp
     .src("./src/styles/*scss")
     .pipe(sass({ outputStyle: "compressed" }))
-    .pipe(gulp.dest("./dist/css"));
+    .pipe(gulp.dest("./public/css"));
 }
 
 function images() {
   return gulp
     .src("./src/images/**/*")
     .pipe(imagemin())
-    .pipe(gulp.dest("./dist/images"));
+    .pipe(gulp.dest("./public/images"));
 }
 
 exports.default = gulp.series(gulp.parallel(styles, images));
