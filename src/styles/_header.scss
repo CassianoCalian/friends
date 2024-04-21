@@ -22,7 +22,8 @@ header {
 
 header a:hover {
   color: colors.$red_color;
-  animation: translateY 0.8s;
+  animation: translateY 0.9s;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 @keyframes translateY {
@@ -30,7 +31,7 @@ header a:hover {
     transform: translateY(0) scale(1);
   }
   to {
-    transform: translateY(-8px) scale(1.2);
+    transform: translateY(-9px) scale(1.2);
   }
 }
 
@@ -54,6 +55,12 @@ header a:hover {
   to {
     transform: translateY(-8px) scale(1.2);
   }
+}
+
+.image-content img {
+  width: 100%;
+  height: auto;
+  animation: piscar 1s infinite alternate;
 }
 
 @media screen and (max-width: 768px) {

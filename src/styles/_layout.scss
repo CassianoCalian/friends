@@ -57,7 +57,7 @@ $font_family: "Sora", sans-serif;
   .text-content {
     width: 50%;
     max-width: none;
-    padding-right: 20px; // Adiciona um espaço entre o texto e a imagem
+    padding-right: 20px;
     font-family: "Sora", sans-serif;
   }
 
@@ -66,7 +66,7 @@ $font_family: "Sora", sans-serif;
 
     img {
       filter: drop-shadow(15px 5px 5px purple);
-      animation: float 8s linear infinite;
+      animation: float-piscar 8s linear infinite;
     }
   }
 
@@ -98,26 +98,42 @@ $font_family: "Sora", sans-serif;
 
 a {
   animation-name: translateY;
-  animation-duration: 0.8s; /* Duração da animação */
+  animation-duration: 0.8s;
   animation-timing-function: ease-in-out;
 }
 
-@keyframes float {
+@keyframes float-piscar {
   0%,
   100% {
     transform: translate(0, 0);
   }
   25% {
-    transform: translate(5%, -5%);
+    transform: translate(5%, -2%);
   }
   50% {
-    transform: translate(0, -25%);
+    transform: translate(-3%, -4%);
   }
   75% {
-    transform: translate(-10%, -10%);
+    transform: translate(1%, 2%);
   }
 }
 
+@keyframes piscar {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.image-content img {
+  animation: piscar 0.5s 12 ease-in-out;
+  animation-fill-mode: forwards;
+}
 //-------------------------------- now we start the about section
 
 .about {
@@ -141,6 +157,7 @@ a {
 
     img {
       height: 500px;
+      filter: drop-shadow(15px 5px 5px colors.$yellow_color);
     }
   }
 }
@@ -183,7 +200,6 @@ a {
     width: 100%;
     flex-direction: column;
   }
-
   .about-content-item {
     width: 100%;
     display: flex;
@@ -193,6 +209,10 @@ a {
       width: 100%;
       max-width: 100%;
       height: auto;
+
+      .about-content-item img {
+        height: 500px;
+      }
     }
   }
 
@@ -234,18 +254,17 @@ a {
     list-style: none;
 
     li {
-      /* Define a altura igual à altura das imagens */
       position: relative;
     }
 
     h4 {
       position: absolute;
-      margin: 0px; /* Remova as margens padrão */
+      margin: 0px;
       padding: 10px;
-      position: absolute; /* Posicione o <h4> dentro do <li> */
-      bottom: 0; /* Alinhe o <h4> ao fundo do <li> */
-      left: 0; /* Alinhe o <h4> à esquerda do <li> */
-      right: 0; /* Alinhe o <h4> à direita do <li> */
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background-color: colors.$purple_color;
       color: colors.$white_color;
       font-family: "GabrielWeiss";
@@ -263,29 +282,23 @@ a {
     position: relative;
   }
   .actors_list li img {
-    transition: transform 0.3s ease; /* Adicione uma transição suave */
+    transition: transform 0.3s ease;
   }
 
   .actors_list li img:hover {
-    transform: scale(1.1); /* Aumente a escala da imagem ao passar o mouse */
+    transform: scale(1.1);
   }
 }
 
 @media screen and (max-width: 768px) {
   .actors {
     .actors_list {
-      display: block; /* Um ator por linha */
-      /* Espaçamento entre os atores */
+      display: block;
     }
 
     img {
-      width: 100%; /* Garanta que as imagens ocupem toda a largura da linha */
-      height: 100%; /* Mantenha a proporção da imagem */
-    }
-
-    h4 {
-      /* Restaure a posição do h4 */
-      /* Adicione um pequeno espaço entre a imagem e o texto */
+      width: 100%;
+      height: 100%;
     }
   }
 }
@@ -345,22 +358,33 @@ a {
 
 @media (max-width: 768px) {
   .curious {
-    max-width: 768px;
+    max-width: 100%;
   }
 
-  .curiosity-item video {
+  .curiosity-item {
     width: 100%;
-    max-width: 768px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .curiosity-item video,
+  .curiosity-item iframe {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
   }
 
   .curiosity-content {
-    display: block; /* Alterar de grid para block */
-    margin-top: 20px; /* Adicionar espaçamento superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
   }
 
   .curiosity-two {
-    width: 100%; /* Fazer as curiosidades ocuparem toda a largura */
-    max-width: 100%; /* Garantir que o texto não ultrapasse a largura máxima */
+    width: 100%;
+    max-width: 100%;
   }
 }
 
